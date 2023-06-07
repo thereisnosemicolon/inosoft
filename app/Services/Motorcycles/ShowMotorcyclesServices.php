@@ -1,10 +1,19 @@
 <?php
 
-namespace App\Http\Services\Motorcycles;
+namespace App\Services\Motorcycles;
 
-use Illuminate\Http\Request;
+use App\Repositories\Motorcycles\ShowMotorcyclesRepositories;
 
 class ShowMotorcyclesServices
 {
-    //
+    protected $showMotorcyclesRepositories;
+
+    public function __construct(ShowMotorcyclesRepositories $showMotorcyclesRepositories)
+    {
+        $this->showMotorcyclesRepositories = $showMotorcyclesRepositories;
+    }
+
+    public function showData(){
+        return $this->showMotorcyclesRepositories->getAll();
+    }
 }
