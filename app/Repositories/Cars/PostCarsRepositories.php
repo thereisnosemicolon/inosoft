@@ -21,7 +21,7 @@ class PostCarsRepositories
         $post->harga = $data['harga'];
         $post->mesin = $data['mesin'];
         $post->kapasitas_penumpang = $data['kapasitas_penumpang'];
-        $post->tipe = ['tipe'];
+        $post->tipe = $data['tipe'];
         $post->save();
         return $post->fresh();
     }

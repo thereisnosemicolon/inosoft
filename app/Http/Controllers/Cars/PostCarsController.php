@@ -18,16 +18,8 @@ class PostCarsController extends Controller
 
     public function post(Request $request){
         try {
-            $data = $request->only([
-                'tahun_keluaran',
-                'warna',
-                'harga',
-                'mesin',
-                'kapasitas_penumpang',
-                'tipe'
-            ]);
             $result = ['status' => 200];
-            $result['data'] = $this->postCarsServices->sendPostData($data);
+            $result['data'] = $this->postCarsServices->sendPostData($request->all());
         } catch (Exception $e){
             $result = [
                 'status' => 500,

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Cars\PostCarsController;
 use App\Http\Controllers\Cars\ShowCarsController;
+use App\Http\Controllers\Motorcycles\PostMotorcyclesController;
+use App\Http\Controllers\Motorcycles\ShowMotorcyclesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,6 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::get('/cars', [ShowCarsController::class, 'show']);
 Route::post('/cars', [PostCarsController::class, 'post']);
+Route::post('/motorcycles', [PostMotorcyclesController::class, 'post']);
+Route::get('/motorcycles', [ShowMotorcyclesController::class, 'show']);
+
