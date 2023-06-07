@@ -18,11 +18,11 @@ class PostCarsServices
 
     public function sendPostData($data) : Cars {
         $validator = Validator::make($data, [
-            'tahun_keluaran' => 'required|string',
+            'tahun_keluaran' => 'required|numeric|digits:4',
             'warna' => 'required|string',
-            'harga' => 'required|string',
+            'harga' => 'required|numeric',
             'mesin' => 'required|string',
-            'kapasitas_penumpang' => 'required|string',
+            'kapasitas_penumpang' => 'required|numeric',
             'tipe' => 'required|string'
         ]);
         if($validator->fails()){

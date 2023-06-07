@@ -18,15 +18,18 @@ class SellMotorcyclesController extends Controller
 
     public function sell($id) : JsonResponse {
         try {
-            $result = ['title' => "Success", 'messages' => 'Sukses menjual motor', 'status' => 200];
-            $result['data'] = $this->sellMotorcycleServices->sendPostData($id);
+            $data = $this->sellMotorcycleServices->sendPostData($id);
+            $result = response()->json([
+                'success' => true,
+                'messages' => "Sukses menjual motor",
+                'data' => $data
+            ], 200);
         } catch (Exception $e){
-            $result = [
-                'title' => "Server Error",
-                'status' => 500,
-                'error' => $e->getMessage()
-            ];
+            $result = response()->json([
+                'success' => false,
+                'messages' => $e->getMessage()
+            ], 500);
         }
-        return response()->json($result, $result['status']);
+        return $result;
     }
 }

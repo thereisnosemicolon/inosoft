@@ -18,9 +18,9 @@ class PostMotorcyclesServices
 
     public function sendPostData($data) : Motorcycles {
         $validator = Validator::make($data, [
-            'tahun_keluaran' => 'required|string',
+            'tahun_keluaran' => 'required|numeric|digits:4',
             'warna' => 'required|string',
-            'harga' => 'required|string',
+            'harga' => 'required|numeric',
             'mesin' => 'required|string',
             'tipe_suspensi' => 'required|string',
             'tipe_transmisi' => 'required|string'

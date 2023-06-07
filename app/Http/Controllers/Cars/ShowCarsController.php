@@ -17,15 +17,20 @@ class ShowCarsController extends Controller
     }
 
     public function show() : JsonResponse {
-        $result = ['status' => 200];
         try {
-            $result['data'] = $this->showCarsServices->showData();
+            $data = $this->showCarsServices->showData();
+            $result = response()->json([
+                'success' => true,
+                'messages' => "Daftar Kendaraan Mobil",
+                'data' => $data
+            ], 200);
         } catch (Exception $e) {
-            $result = [
-                'status' => 500,
-                'error' => $e->getMessage()
-            ];
+            $result = response()->json([
+                'success' => false,
+                'messages' => $e->getMessage(),
+                'data' => $data
+            ], 500);
         }
-        return response()->json($result, $result['status']);
+        return $result;
     }
 }

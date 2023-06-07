@@ -17,15 +17,19 @@ class ShowReportSalesMotorcyclesController extends Controller
     }
 
     public function show() : JsonResponse {
-        $result = ['title' => 'Success', 'messages' => 'Data Penjualan Motor', 'status' => 200];
         try {
-            $result['data'] = $this->showReportSalesMotorcyclesServices->showData();
+            $data = $this->showReportSalesMotorcyclesServices->showData();
+            $result = response()->json([
+                'success' => true,
+                'messages' => "Daftar Penjualan kendaraan Motor",
+                'data' => $data
+            ], 200);
         } catch (Exception $e) {
             $result = [
                 'status' => 500,
                 'error' => $e->getMessage()
             ];
         }
-        return response()->json($result, $result['status']);
+        return $result;
     }
 }

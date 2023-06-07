@@ -18,12 +18,19 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $validator = Validator::make(request()->all(), [
+            'email' => 'required|email',
+            'password' => 'required|string|min:8',
+        ]);
 
-        if ($token = auth('api')->attempt($credentials)) {
+        if($validator->fails()){
+            return response()->json(['success' => false, 'messages' => $validator->errors()], 409);
+        }
+
+        if ($token = auth('api')->attempt($validator->validated())) {
             return $this->respondWithToken($token);
         } else {
-            return response()->json(['status' => 400, 'messages' => "Invalid Credentials"]);
+            return response()->json(['success' => false ,'messages' => "Invalid Credentials"], 400);
         }
 
         return response()->json(['error' => 'Unauthorized'], 401);
@@ -36,38 +43,41 @@ class AuthController extends Controller
         ]);
 
         if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
+            return response()->json(['success' => false, 'messages' => $validator->errors()], 409);
         }
 
         $user = new User;
-        $user->name = request()->name;
         $user->email = request()->email;
         $user->password = bcrypt(request()->password);
         $user->save();
 
-        return response()->json($user, 201);
+        return response()->json(['success' => true, 'data' => $user], 201);
     }
 
 
     public function logout()
     {
-        $this->guard()->logout();
+        Auth::guard()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['success' => true, 'messages' => 'Successfully logged out'], 200);
     }
 
     public function refresh()
     {
-        return $this->respondWithToken($this->guard()->refresh());
+        return $this->respondWithToken(Auth::guard()->refresh());
     }
 
     protected function respondWithToken($token)
     {
         return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
-        ]);
+            'success' => true,
+            'messages' => "Success to generate your token",
+            'data' => [
+                'access_token' => $token,
+                'token_type' => 'bearer',
+                'expires_in' => auth('api')->factory()->getTTL() * 60
+            ]
+        ], 201);
     }
 
 }

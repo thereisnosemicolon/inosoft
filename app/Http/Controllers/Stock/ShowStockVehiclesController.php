@@ -20,16 +20,23 @@ class ShowStockVehiclesController extends Controller
     }
 
     public function show() : JsonResponse {
-        $result = ['title' => 'Success', 'messages' => 'Stok Kendaraan' , 'status' => 200];
         try {
-            $result['data']['cars'] = $this->showMotorcyclesServices->showData();
-            $result['data']['motorcycles'] = $this->showCarsServices->showData();
+            $cars = $this->showMotorcyclesServices->showData();
+            $motorcycles = $this->showCarsServices->showData();
+            $result = response()->json([
+                'success' => true,
+                'messages' => "Daftar Stock Kendaraan",
+                'data' => [
+                    'Mobil' => $cars,
+                    'Motor' => $motorcycles
+                ]
+            ], 200);
         } catch (Exception $e) {
             $result = [
                 'status' => 500,
                 'error' => $e->getMessage()
             ];
         }
-        return response()->json($result, $result['status']);
+        return $result;
     }
 }
