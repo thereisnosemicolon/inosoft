@@ -2,6 +2,7 @@
 
 namespace App\Services\Cars;
 
+use App\Models\ReportSalesCars;
 use App\Repositories\Cars\SellCarsRepositories;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
@@ -15,7 +16,7 @@ class SellCarsServices
         $this->sellCarsRepositories = $sellCarsRepositories;
     }
 
-    public function sendPostData($data){
-        return $this->sellCarsRepositories->savePostData($data);
+    public function sendPostData($id) : ReportSalesCars {
+        return $this->sellCarsRepositories->savePostData($id);
     }
 }

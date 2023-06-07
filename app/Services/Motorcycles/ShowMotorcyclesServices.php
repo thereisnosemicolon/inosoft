@@ -2,7 +2,9 @@
 
 namespace App\Services\Motorcycles;
 
+use App\Models\Motorcycles;
 use App\Repositories\Motorcycles\ShowMotorcyclesRepositories;
+use Illuminate\Database\Eloquent\Collection;
 
 class ShowMotorcyclesServices
 {
@@ -13,7 +15,7 @@ class ShowMotorcyclesServices
         $this->showMotorcyclesRepositories = $showMotorcyclesRepositories;
     }
 
-    public function showData(){
+    public function showData() : Collection {
         return $this->showMotorcyclesRepositories->getAll();
     }
 }

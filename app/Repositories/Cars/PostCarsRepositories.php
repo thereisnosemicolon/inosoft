@@ -13,7 +13,7 @@ class PostCarsRepositories
         $this->cars = $cars;
     }
 
-    public function savePostData($data) : cars {
+    public function savePostData($data) : Cars {
         $post = $this->cars;
         $post->tahun_keluaran = $data['tahun_keluaran'];
         $post->warna = $data['warna'];

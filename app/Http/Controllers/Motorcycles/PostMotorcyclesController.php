@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Motorcycles;
 use App\Http\Controllers\Controller;
 use App\Services\Motorcycles\PostMotorcyclesServices;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class PostMotorcyclesController extends Controller
@@ -15,7 +16,7 @@ class PostMotorcyclesController extends Controller
         $this->postMotorcyclesServices = $postMotorcyclesServices;
     }
 
-    public function post(Request $request){
+    public function post(Request $request) : JsonResponse {
         try {
             $result = ['status' => 200];
             $result['data'] = $this->postMotorcyclesServices->sendPostData($request->all());

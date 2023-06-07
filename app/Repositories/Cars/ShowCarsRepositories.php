@@ -4,7 +4,6 @@ namespace App\Repositories\Cars;
 
 use App\Models\Cars;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
 
 class ShowCarsRepositories
 {

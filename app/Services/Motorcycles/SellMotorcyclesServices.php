@@ -2,6 +2,7 @@
 
 namespace App\Services\Motorcycles;
 
+use App\Models\ReportSalesMotorcycles;
 use App\Repositories\Motorcycles\SellMotorcyclesRepositories;
 
 class SellMotorcyclesServices
@@ -13,7 +14,7 @@ class SellMotorcyclesServices
         $this->sellMotorcyclesRepositories = $sellMotorcyclesRepositories;
     }
 
-    public function sendPostData($id){
+    public function sendPostData($id) : ReportSalesMotorcycles {
         return $this->sellMotorcyclesRepositories->savePostData($id);
     }
 }

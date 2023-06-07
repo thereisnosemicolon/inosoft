@@ -4,7 +4,6 @@ namespace App\Repositories\Cars;
 
 use App\Models\Cars;
 use App\Models\ReportSalesCars;
-use Illuminate\Database\Eloquent\Collection;
 
 class SellCarsRepositories
 {
@@ -17,8 +16,8 @@ class SellCarsRepositories
         $this->cars = $cars;
     }
 
-    public function savePostData($data) : ReportSalesCars {
-        $cars = $this->cars->find((string) $data);
+    public function savePostData($id) : ReportSalesCars {
+        $cars = $this->cars->find((string) $id);
         $post = $this->reportSalesCars;
         $post->tahun_keluaran = $cars['tahun_keluaran'];
         $post->warna = $cars['warna'];

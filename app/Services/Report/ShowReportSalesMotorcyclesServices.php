@@ -3,6 +3,7 @@
 namespace App\Services\Report;
 
 use App\Repositories\Report\ShowReportSalesMotorcyclesRepositories;
+use Illuminate\Database\Eloquent\Collection;
 
 class ShowReportSalesMotorcyclesServices
 {
@@ -13,7 +14,7 @@ class ShowReportSalesMotorcyclesServices
         $this->showReportSalesMotorcyclesRepositories = $showReportSalesMotorcyclesRepositories;
     }
 
-    public function showData(){
+    public function showData() : Collection {
         return $this->showReportSalesMotorcyclesRepositories->getAll();
     }
 }

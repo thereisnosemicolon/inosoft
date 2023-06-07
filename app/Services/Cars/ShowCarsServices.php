@@ -3,6 +3,8 @@
 namespace App\Services\Cars;
 
 use App\Repositories\Cars\ShowCarsRepositories;
+use Illuminate\Database\Eloquent\Collection;
+
 class ShowCarsServices
 {
 
@@ -13,7 +15,7 @@ class ShowCarsServices
         $this->showCarsRepositories = $showCarsRepositories;
     }
 
-    public function showData(){
+    public function showData() : Collection {
         return $this->showCarsRepositories->getAll();
     }
 }

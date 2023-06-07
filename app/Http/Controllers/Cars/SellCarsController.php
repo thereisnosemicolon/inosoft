@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Cars;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cars;
 use App\Services\Cars\SellCarsServices;
 use Exception;
+use Illuminate\Http\JsonResponse;
 
 class SellCarsController extends Controller
 {
@@ -16,10 +16,10 @@ class SellCarsController extends Controller
         $this->sellCarsServices = $sellCarsServices;
     }
 
-    public function sell($cars){
+    public function sell($id) : JsonResponse {
         try {
             $result = ['status' => 200, 'title' => "Success", 'messages' => 'Sukses menjual mobil'];
-            $result['data'] = $this->sellCarsServices->sendPostData($cars);
+            $result['data'] = $this->sellCarsServices->sendPostData($id);
         } catch (Exception $e){
             $result = [
                 'title' => "Server Error",

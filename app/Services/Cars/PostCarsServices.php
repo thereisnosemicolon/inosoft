@@ -2,8 +2,8 @@
 
 namespace App\Services\Cars;
 
+use App\Models\Cars;
 use App\Repositories\Cars\PostCarsRepositories;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
 
@@ -16,7 +16,7 @@ class PostCarsServices
         $this->postCarsRepositories = $postCarsRepositories;
     }
 
-    public function sendPostData($data){
+    public function sendPostData($data) : Cars {
         $validator = Validator::make($data, [
             'tahun_keluaran' => 'required|string',
             'warna' => 'required|string',

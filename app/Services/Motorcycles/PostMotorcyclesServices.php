@@ -2,6 +2,7 @@
 
 namespace App\Services\Motorcycles;
 
+use App\Models\Motorcycles;
 use App\Repositories\Motorcycles\PostMotorcyclesRepositories;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
@@ -15,7 +16,7 @@ class PostMotorcyclesServices
         $this->postMotorcyclesRepositories = $postMotorcyclesRepositories;
     }
 
-    public function sendPostData($data){
+    public function sendPostData($data) : Motorcycles {
         $validator = Validator::make($data, [
             'tahun_keluaran' => 'required|string',
             'warna' => 'required|string',

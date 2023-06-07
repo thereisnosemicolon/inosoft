@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Motorcycles;
 use App\Http\Controllers\Controller;
 use App\Services\Motorcycles\SellMotorcyclesServices;
 use Exception;
+use Illuminate\Http\JsonResponse;
 
 class SellMotorcyclesController extends Controller
 {
@@ -15,7 +16,7 @@ class SellMotorcyclesController extends Controller
         $this->sellMotorcycleServices = $sellMotorcycleServices;
     }
 
-    public function sell($id){
+    public function sell($id) : JsonResponse {
         try {
             $result = ['title' => "Success", 'messages' => 'Sukses menjual motor', 'status' => 200];
             $result['data'] = $this->sellMotorcycleServices->sendPostData($id);

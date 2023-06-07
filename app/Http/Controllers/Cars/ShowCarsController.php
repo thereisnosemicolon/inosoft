@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Cars;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Services\Cars\ShowCarsServices;
 use Exception;
+use Illuminate\Http\JsonResponse;
 
 class ShowCarsController extends Controller
 {
@@ -16,7 +16,7 @@ class ShowCarsController extends Controller
         $this->showCarsServices = $showCarsServices;
     }
 
-    public function show(){
+    public function show() : JsonResponse {
         $result = ['status' => 200];
         try {
             $result['data'] = $this->showCarsServices->showData();
