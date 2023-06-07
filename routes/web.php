@@ -11,17 +11,7 @@ use App\Http\Controllers\Report\ShowReportSalesMotorcyclesController;
 use App\Http\Controllers\Stock\ShowStockVehiclesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/cars', [ShowCarsController::class, 'show']);
-Route::post('/cars', [PostCarsController::class, 'post']);
+Route::get('/', function(){
 
-Route::post('/motorcycles', [PostMotorcyclesController::class, 'post']);
-Route::get('/motorcycles', [ShowMotorcyclesController::class, 'show']);
-
-
-Route::post('/cars/sell/{_id}', [SellCarsController::class, 'sell']);
-Route::post('/motorcycles/sell/{_id}', [SellMotorcyclesController::class, 'sell']);
-
-Route::get('stock', [ShowStockVehiclesController::class, 'show']);
-
-Route::get('/report_sales_cars', [ShowReportSalesCarsController::class, 'show']);
-Route::get('/report_sales_motorcycles', [ShowReportSalesMotorcyclesController::class, 'show']);
+    echo "Inosoft-Kevin Pratama";
+});
