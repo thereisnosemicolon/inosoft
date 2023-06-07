@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
 
-class Vehicle extends Model
+class Motorcycles extends Model
 {
     use HasFactory;
-    protected $collection = 'kendaraans';
+    protected $collection = 'motorcycles';
 }
