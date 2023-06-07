@@ -1,27 +1,24 @@
 <?php
 
 use App\Http\Controllers\Cars\PostCarsController;
+use App\Http\Controllers\Cars\SellCarsController;
 use App\Http\Controllers\Cars\ShowCarsController;
 use App\Http\Controllers\Motorcycles\PostMotorcyclesController;
+use App\Http\Controllers\Motorcycles\SellMotorcyclesController;
 use App\Http\Controllers\Motorcycles\ShowMotorcyclesController;
+use App\Http\Controllers\Report\ShowReportSalesCarsController;
+use App\Http\Controllers\Report\ShowReportSalesMotorcyclesController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/cars', [ShowCarsController::class, 'show']);
 Route::post('/cars', [PostCarsController::class, 'post']);
+
 Route::post('/motorcycles', [PostMotorcyclesController::class, 'post']);
 Route::get('/motorcycles', [ShowMotorcyclesController::class, 'show']);
 
+
+Route::post('/cars/sell/{_id}', [SellCarsController::class, 'sell']);
+Route::post('/motorcycles/sell/{_id}', [SellMotorcyclesController::class, 'sell']);
+
+Route::get('/report_sales_cars', [ShowReportSalesCarsController::class, 'show']);
+Route::get('/report_sales_motorcycles', [ShowReportSalesMotorcyclesController::class, 'show']);

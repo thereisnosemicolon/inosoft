@@ -20,8 +20,8 @@ class PostMotorcyclesRepositories
         $post->warna = $data['warna'];
         $post->harga = $data['harga'];
         $post->mesin = $data['mesin'];
-        $post->kapasitas_penumpang = $data['tipe_transmisi'];
-        $post->tipe = $data['tipe_suspensi'];
+        $post->tipe_transmisi = $data['tipe_transmisi'];
+        $post->tipe_suspensi = $data['tipe_suspensi'];
         $post->save();
         return $post->fresh();
     }

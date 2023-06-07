@@ -3,7 +3,6 @@
 namespace App\Repositories\Cars;
 
 use App\Models\Cars;
-use Illuminate\Database\Eloquent\Collection;
 
 class PostCarsRepositories
 {
@@ -14,7 +13,7 @@ class PostCarsRepositories
         $this->cars = $cars;
     }
 
-    public function savePostData($data){
+    public function savePostData($data) : cars {
         $post = $this->cars;
         $post->tahun_keluaran = $data['tahun_keluaran'];
         $post->warna = $data['warna'];
