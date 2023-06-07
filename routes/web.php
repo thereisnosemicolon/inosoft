@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\Cars\PostCarsController;
+use App\Http\Controllers\Cars\ShowCarsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ShowVehicleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,5 @@ use App\Http\Controllers\ShowVehicleController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/vehicle', [ShowVehicleController::class, 'show']);
+Route::get('/cars', [ShowCarsController::class, 'show']);
+Route::post('/cars', [PostCarsController::class, 'post']);
